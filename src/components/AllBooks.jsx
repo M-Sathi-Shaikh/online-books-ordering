@@ -79,7 +79,7 @@ const AllBooks = () => {
                     <FaStar className='text-yellow-500' />
                     <span>{data.rating}</span>
                   </div>
-                  <p className='text-xs text-gray-600 dark:text-gray-400'>{data.description}</p>
+                  <p className=' text-gray-600 dark:text-gray-400'>{data.description}</p>
                 </div>
               </div>
             ))}

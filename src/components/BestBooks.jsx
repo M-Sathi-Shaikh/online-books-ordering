@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Img1 from "../assets/books/book1.jpg";
 import Img2 from "../assets/books/book2.jpg";
 import Img3 from "../assets/books/book3.jpg";
@@ -27,44 +27,56 @@ const bookData = [
 
 const BestBooks = ({ handleOrderPopup }) => {
   return (
-    <div className="py-10">
-      <div className='container'>
+    <div className="py-10 px-4">
+      <div className="max-w-6xl mx-auto">
         {/* Header section */}
-        <div className="text-center mb-20 max-w-[400px] mx-auto">
-          <p className='text-xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>Trending Books</p>
-          <h1 className='text-3xl'>Best Books</h1>
-          <p className='text-xl text-gray-400'>
+        <div className="text-center mb-10">
+          <p className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+            Trending Books
+          </p>
+          <h1 className="text-3xl font-bold dark:text-white">Best Books</h1>
+          <p className="text-gray-500 dark:text-gray-300 max-w-lg mx-auto text-sm">
             Discover the top-rated books loved by readers worldwide. From thrilling mysteries to heartwarming tales, these books are sure to captivate your imagination.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-5 place-items-center">
+
+        {/* Books Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {bookData.map((book) => (
             <div
-              data-aos="zoom-in"
-              className='rounded-2xl bg-white dark:bg-gray-800 hover:bg-primary dark:hover:bg-primary hover:text-white relative shadow-xl duration-high group max-w-[300px]'
               key={book.id}
+              className="rounded-2xl bg-white dark:bg-gray-800 hover:bg-primary dark:hover:bg-primary hover:text-white shadow-lg transition-transform duration-300 group p-6 text-center"
             >
-              <div className='h-[100px]'>
-                <img src={book.img} alt={book.title} className='max-w-[100px] block mx-auto transform -translate-y-14 group-hover:scale-105 duration-300 shadow-md' />
+              <div className="h-32 flex justify-center">
+                <img
+                  src={book.img}
+                  alt={book.title}
+                  className="h-25 w-auto object-contain transition-transform duration-300 transform group-hover:scale-110"
+                />
               </div>
-              <div className='p-4 text-center'>
-                <div className='w-full flex items-center justify-center'>
-                  <FaStar className='text-yellow-500' />
-                  <FaStar className='text-yellow-500' />
-                  <FaStar className='text-yellow-500' />
-                  <FaStar className='text-yellow-500' />
-                  <FaStar className='text-yellow-500' />
+              <div className="mt-4">
+                <div className="flex justify-center gap-1">
+                  {[...Array(5)].map((_, index) => (
+                    <FaStar key={index} className="text-yellow-500" />
+                  ))}
                 </div>
-                <h1 className='text-xl font-bold'>{book.title}</h1>
-                <p className='text-gray-500 group-hover:text-white duration-300 text-sm line-clamp-2'>{book.description}</p>
-                <button onClick={handleOrderPopup} className='bg-primary to-secondary text-white px-4 py-2 rounded-full mt-4 hover:scale-105 duration-200 group-hover:bg-white group-hover:text-primary'>Order Now</button>
+                <h2 className="text-lg font-bold mt-2">{book.title}</h2>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mt-2 line-clamp-2 group-hover:text-white">
+                  {book.description}
+                </p>
+                <button
+                  onClick={handleOrderPopup}
+                  className="mt-4 bg-primary text-white px-5 py-2 rounded-full hover:scale-105 transition duration-200 group-hover:bg-white group-hover:text-primary"
+                >
+                  Order Now
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default BestBooks;
